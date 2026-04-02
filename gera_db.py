@@ -3,37 +3,38 @@ from web_scrapping import obtem_jogos
 import sqlitecloud
 
 # Importa todos os dados históricos
-lista_bases = [
-"base_lck_2024.xlsx",
-"base_lck_2025.xlsx",
+# lista_bases = [
+# "base_lck_2024.xlsx",
+# "base_lck_2025.xlsx",
 
-"base_lec_2024.xlsx",
-"base_lec_2025.xlsx",
+# "base_lec_2024.xlsx",
+# "base_lec_2025.xlsx",
 
-"base_lpl_2024.xlsx",
-"base_lpl_2025.xlsx"
-]
+# "base_lpl_2024.xlsx",
+# "base_lpl_2025.xlsx"
+# ]
 
-dfnovo = pd.DataFrame()
+# dfnovo = pd.DataFrame()
 
-for i in lista_bases:
-    # print(i)
-    df_temp = pd.read_excel(i)
-    df_temp['origem'] = i
-    dfnovo = pd.concat((dfnovo, df_temp))
+# for i in lista_bases:
+#     # print(i)
+#     df_temp = pd.read_excel(i)
+#     df_temp['origem'] = i
+#     dfnovo = pd.concat((dfnovo, df_temp))
 
-dfnovo['origem'] = dfnovo['origem'].str.replace('base_', '', regex=False)
-dfnovo['origem'] = dfnovo['origem'].str.replace('_2024.xlsx', '', regex=False)
-dfnovo['origem'] = dfnovo['origem'].str.replace('_2025.xlsx', '', regex=False)
+# dfnovo['origem'] = dfnovo['origem'].str.replace('base_', '', regex=False)
+# dfnovo['origem'] = dfnovo['origem'].str.replace('_2024.xlsx', '', regex=False)
+# dfnovo['origem'] = dfnovo['origem'].str.replace('_2025.xlsx', '', regex=False)
 
-dfnovo['Data'] = dfnovo['Data'].dt.strftime('%d/%m/%Y')
+# dfnovo['Data'] = dfnovo['Data'].dt.strftime('%d/%m/%Y')
 
 # Obtém os dados recentes
 df_lec = obtem_jogos("lec")
 df_lck = obtem_jogos("lck")
 
-dfnovo = pd.concat((dfnovo, df_lec, df_lck))
+# dfnovo = pd.concat((dfnovo, df_lec, df_lck))
 
+dfnovo = pd.concat((df_lec, df_lck))
 
 connection_string = "sqlitecloud://cw1kibdpdk.g4.sqlite.cloud:8860/dados_lol?apikey=kGwXx2fOHa43yDXhBsdeyAGbJBQXK0ljXRDtBEbieFs"
 
