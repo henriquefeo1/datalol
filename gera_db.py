@@ -55,11 +55,11 @@ resultado = resultado.drop(columns=['_merge'])
 for index, row in resultado.iterrows():
     # Forma segura de inserir dados, evitando injeção de SQL
     insert_sql = """
-    INSERT INTO dados_partidas (Data, Time1, Time2, Win1, Win2, Winner)
-    VALUES (?, ?, ?, ?, ?, ?);
+    INSERT INTO dados_partidas (Data, Time1, Time2, Win1, Win2, Winner, origem)
+    VALUES (?, ?, ?, ?, ?, ?, ?);
     """
     values = (row['Data'], row['Time1'], row['Time2'], 
-              row['Win1'], row['Win2'], row['Winner'])
+              row['Win1'], row['Win2'], row['Winner'], row['origem'])
     cursor.execute(insert_sql, values)
 
 # Fechar conexão
