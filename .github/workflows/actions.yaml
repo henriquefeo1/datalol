@@ -1,26 +1,26 @@
-# name: run main.py
+name: run gera_db.py
 
-# on:
-#   schedule:
-#     - cron: '0 * * * *' # A cada hora
+on:
+  schedule:
+    - cron: '0 */6 * * *' # A cada 6 horas
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
 
-#       - name: checkout repo content
-#         uses: actions/checkout@v2 # checkout the repository content to github runner
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content to github runner
 
-#       - name: setup python
-#         uses: actions/setup-python@v4
-#         with:
-#           python-version: '3.13.1' # install the python version needed
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13.1' # install the python version needed
           
-#       - name: install python packages
-#         run: |
-#           python -m pip install --upgrade pip
-#           pip install -r requirements.txt
+      - name: install python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
           
-#       - name: execute py script # run main.py
-#         run: python main.py
+      - name: execute py script # run gera_db.py
+        run: python gera_db.py
