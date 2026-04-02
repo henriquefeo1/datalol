@@ -63,5 +63,3 @@ def obtem_jogos(liga):
     driver.quit
 
     return df
-
-df_lck = obtem_jogos("lck")
