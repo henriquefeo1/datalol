@@ -87,5 +87,4 @@ with gr.Blocks(title="Data LOL Prediction") as demo:
         outputs=[df_final, df_predito_rf, df_predito_log, df_predito_svm]
     )
 
-if __name__ == "__main__":
-    demo.launch()
+demo.launch()
