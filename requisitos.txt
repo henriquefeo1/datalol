@@ -1,4 +1,0 @@
-sqlitecloud==0.0.84
-selenium==4.35.0
-webdriver-manager==4.0.2
-gradio==5.47.1
